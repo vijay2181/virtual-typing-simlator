@@ -2,11 +2,10 @@
 
 ## Overview
 
-VTS is a modern, futuristic-styled typing practice application designed to help users improve their typing skills through structured exercises. The application features a sleek dark theme with glowing effects and provides real-time feedback on typing accuracy and speed.
+VTS is a typing practice application designed to help users improve their typing skills through structured exercises. The application provides real-time feedback on typing accuracy and speed.
 
 ## Features
 
-- **Futuristic UI Design**: Dark gradient backgrounds with glowing cyan accents and modern typography
 - **Comprehensive Typing Exercises**: 27 different exercises covering all keyboard sections
 - **Real-Time Feedback**: Live WPM (Words Per Minute) calculation as you type
 - **Accuracy Tracking**: Visual highlighting of correct and incorrect characters

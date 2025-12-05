@@ -107,4 +107,4 @@ For issues or suggestions:
 
 ---
 
-**Start improving your typing skills today with Typing Fundamentals!**
+**Start improving your typing skills today with VTS!**

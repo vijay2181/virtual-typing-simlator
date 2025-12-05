@@ -1,0 +1,342 @@
+<html>
+<meta charset="utf-8"> 
+<head>
+ <title>Typing Fundamentals - Futuristic</title>
+ <style>
+	body {
+		font-family: 'Segoe UI', 'Roboto', sans-serif;
+		font-weight: 300;
+		background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+		color: #e0e0ff;
+		margin: 0;
+		padding: 20px;
+		}
+	#content {
+		background: linear-gradient(145deg, #0f1525 0%, #1a1f35 100%);
+		margin: 0 auto;
+		border-radius: 16px;
+		border: 1px solid #2a3a6a;
+		padding: 25px;
+		max-width: 1200px;
+		box-shadow: 0 10px 30px rgba(0, 50, 150, 0.3),
+					inset 0 1px 0 rgba(255, 255, 255, 0.1);
+		}
+	#heading {
+		color: #00f7ff;
+		padding: 15px;
+		text-align: center;
+		font-size: 28px;
+		font-weight: 700;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		background: linear-gradient(90deg, #0a1a3a, transparent);
+		border-radius: 10px;
+		margin-bottom: 25px;
+		border-left: 4px solid #00f7ff;
+		text-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
+		}
+	#utilBar {
+		background: linear-gradient(90deg, #1a2a4a 0%, #15203a 100%);
+		padding: 15px;
+		width: 100%;
+		border-radius: 10px;
+		margin-bottom: 25px;
+		border: 1px solid #2a4a8a;
+		box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		}
+	#feedback {
+		display: inline-block;
+		color: #00ffaa;
+		font-size: 18px;
+		font-weight: 600;
+		text-shadow: 0 0 5px rgba(0, 255, 170, 0.5);
+		} 
+	.buttons {
+		display: flex;
+		gap: 12px;
+		}
+	button, select {
+		font-family: 'Segoe UI', 'Roboto', sans-serif;
+		font-weight: 600;
+		}
+	button {
+		background: linear-gradient(to bottom, #2a5aaa 0%, #1a3a7a 100%);
+		color: #ffffff;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		border: 1px solid #3a6acc;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+		}
+	button:hover {
+		background: linear-gradient(to bottom, #3a6acc 0%, #2a5aaa 100%);
+		transform: translateY(-2px);
+		box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+		}
+	button:active {
+		transform: translateY(1px);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+		}
+	#exerciseSelector {
+		background: #0f1525;
+		color: #a0c0ff;
+		border: 1px solid #2a4a8a;
+		padding: 10px 15px;
+		border-radius: 8px;
+		font-size: 16px;
+		width: 300px;
+		box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+		}
+	#prompt, textarea {
+		font-family: 'Consolas', 'Monaco', monospace;
+		font-size: 18px;
+		line-height: 32px;
+		}
+	.matchCorrect {
+		background-color: rgba(0, 255, 170, 0.2);
+		color: #a0ffd0;
+		border-radius: 4px;
+		padding: 2px 4px;
+		}
+	.matchIncorrect {
+		background-color: rgba(255, 50, 100, 0.3);
+		color: #ffa0b0;
+		border-radius: 4px;
+		padding: 2px 4px;
+		text-decoration: line-through;
+		}
+	#prompt {
+		padding: 25px;
+		background: rgba(10, 15, 30, 0.7);
+		border-radius: 12px;
+		border: 1px solid #2a4a8a;
+		min-height: 200px;
+		margin-bottom: 25px;
+		box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5);
+		overflow-wrap: break-word;
+		}
+	textarea {
+		width: 100%;
+		background: rgba(10, 15, 30, 0.7);
+		padding: 25px;
+		border: 1px solid #2a4a8a;
+		border-radius: 12px;
+		color: #c0e0ff;
+		font-size: 18px;
+		line-height: 32px;
+		resize: none;
+		box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5);
+		transition: all 0.3s ease;
+		}
+	textarea:focus {
+		outline: none;
+		border-color: #00f7ff;
+		box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.5),
+					0 0 15px rgba(0, 247, 255, 0.3);
+		}
+	#response {
+		background: transparent;
+		}
+	.areaLabel {
+		padding-top: 15px;
+		padding-bottom: 15px;
+		font-weight: 600;
+		font-size: 20px;
+		color: #00d0ff;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 2px solid #2a4a8a;
+		margin-bottom: 15px;
+		}
+	.areaLabel .buttons {
+		margin-top: -5px;
+		}
+	.typingArea {
+		background: rgba(10, 20, 40, 0.5);
+		border-radius: 12px;
+		padding: 20px;
+		margin-top: 20px;
+		border: 1px solid #2a4a8a;
+		}
+	::selection {
+		background-color: rgba(0, 247, 255, 0.5);
+		color: white;
+		}
+ </style>
+</head>
+<body>
+
+ <div id="content">
+ <div id="heading">
+	VTS Virtual Typing Simulator
+</div>
+ <div id="utilBar">
+ <select onchange="changeEx();" id="exerciseSelector"><option>Choose an exercise!</select>
+	  <div id="feedback">
+	  </div>
+	  <div class="buttons">
+	  <button onclick="reset();">Reset</button>
+     <button onclick="doFinished();">Done!</button>
+	  </div>
+	</div>
+
+  <div class="areaLabel">Exercise Text:</div>
+<div id="prompt">
+   Hello. Please choose an exercise to begin!
+  </div>
+  <div class="areaLabel">Type here:<div class="buttons">
+	  <button onclick="reset();">Reset</button>
+     <button onclick="doFinished();">Done!</button>
+	  </div></div> 
+  <div class="typingArea">
+   <textarea id="response_input" onkeyup="getKeyDown();" spellcheck="false"></textarea>
+  </div>
+
+
+
+ </div>
+</body>
+<script type="text/javascript">
+
+var exerciseText = {
+	"Introduction" : "Developing typing skills is valuable in the modern digital age. When you become proficient at typing, your efficiency with computer tasks improves significantly. Proper hand placement on the keyboard forms the foundation of good typing technique. Different fingers are assigned to specific key clusters for optimal typing flow. Regular practice builds muscle memory, connecting your brain's commands to your fingers' movements. Typing practice includes words, sentences, and numerical expressions like: 42+58=100. Repeating each exercise multiple times reinforces your familiarity with keyboard patterns. This typing evaluation measures your current abilities, providing a baseline for tracking your progress through practice sessions. Enjoy your learning journey!",
+	
+	"Home Row Basics" : "a a a a s s s s d d d d f f f f j j j j k k k k l l l l ; ; ; ;\nasdf jkl; ;lkj fdsa asdf jkl; ;lkj fdsa\na s d f j k l ; ; l k j f d s a a s d f j k l ;\nafds sfda dasf fdsa afds sfda dasf fdsa\nj;lk kj;l lj;k ;kjl j;lk kj;l lj;k ;kjl\najskdlf; ;alskdjf ajskdlf; ;alskdjf\nafj;sdkl ;jfalkds afj;sdkl ;jfalkds\n",
+	
+	"Home Row Expansion" : "g g g g h h h h g g g g h h h h\nghghgh hghghg ghghgh hghghg\ng h g h g h g h g h g h",
+	
+	"Home Row Combinations" : "gfgfgfgf hjhjhjhj gfgfgfgf hjhjhjhj\ngfhj gfhj gfhj gfhj gdfhkj gdfhkj gafgaf h;jh;j\ndad sad fad glad had lad;\ndad sad fad glad had lad;",
+	
+	"QWERT Practice" : "q q q q w w w w e e e e r r r r t t t t\nq w e r t q w e r t q w e r t q w e r t\nqwert qwert qwert qwert qwert qwert qwert qwert\nerqwt tweqr weqrt rwetq erqwt tweqr weqrt rwetq",
+	
+	"QWERT Integration" : "qaqaqaqa wswswsws edededed rfrfrfrf tftftftf\nqawsedrftfqawsedrftf\nq a w s e d r f t f q a w s e d r f t f\nwe are fed; we are fed\nkale was far; kale was far\nkate was late; kate was late\njade feels great; jade feels great\ntrade a late q; trade a late q",
+	
+	"YUIOP Patterns" : "yyyy uuuu iiii oooo pppp\ny u i o p y u i o p y u i o p y u i o p\nyuiop yuiop yuiop yuiop yuiop yuiop yuiop yuiop\nuipoy iopyu oyiup piuyo uipoy iopyu oyiup piuyo",
+	
+	"YUIOP Sentences" : "yjyjyjyj ujujujuj ikikikik olololol p;p;p;p;\nyjujikolp; yjujikolp; yjujikolp; yjujikolp;\ny j u j i k o l p ; y j u j i k o l p ;\nyou are a great passer; you are a great passer\njust do what you should; just do what you should\nwe will hear really great after the show is out; we will hear really great after the show is out\nplease eat your food first; please eat your food first\nkate will try out for a hard part; kate will try out for a hard part\nthe quest is easy if you try hard; the quest is easy if you try hard",
+	
+	"ZXCVB Drills" : "zzzz xxxx cccc vvvv bbbb\nz x c v b z x c v b z x c v b z x c v b\nzxcvb zxcvb zxcvb zxcvb zxcvb zxcvb zxcvb zxcvb\nzbvxc vcbxz xbvcz cbzxv bxzcv zbvxc vcbxz xbvcz cbzxv bxzcv",
+	
+	"ZXCVB Phrases" : "zazazaza xsxsxsxs cdcdcdcd vfvfvfvf bfbfbfbf\nzaxscdvfbf zaxscdvfbf zaxscdvfbf zaxscdvfbf\nz a x s c d v f b f z a x s c d v f b f\ncats are afraid of water; cats are afraid of water\nplease take out the trash; please take out the trash\nhe blurted out the correct answer; he blurted out the correct answer\nyou should see what the xray shows; you should see what the xray shows\nthe vertical stripes look bright; the vertical stripes look bright\nthe zodiac says it is very likely; the zodiac says it is very likely\nplease help us figure it out; please help us figure it out",
+	
+	"NM,./ Exercises" : "nnnn mmmm ,,,, .... ////\nn m , . / n m , . / n m , . / n m , . /\nnm,./ nm,./ nm,./ nm,./ nm,./ nm,./ nm,./ nm,./\nn/m,. m/.,n ,/.nm .m/,n /n,.m n/m,. m/.,n ,/.nm .m/,n /n,.m",
+	
+	"NM,./ Paragraphs" : "njnjnjnj mjmjmjmj ,k,k,k,k .l.l.l.l /;/;/;/;\nnjmj,k.l/; njmj,k.l/; njmj,k.l/; njmj,k.l/;\nn j m j , k . l / ; n j m j , k . l / ;\nmany times, it's best to minimize distractions.\nnames are important to remember.\nmake sure to mention that I might stop by.\nmaintaining a healthy diet is most vital.\nthe town is right beyond the next mountain.\nmultiple men work down at the wharf.\nmany notable attendees made an appearance.\nmetal pillars lined the main entrance to the mansion.",
+	
+	"Number Basics" : "```` 1111 2222 3333 4444 5555\n` 1 2 3 4 5 ` 1 2 3 4 5 ` 1 2 3 4 5 ` 1 2 3 4 5\n`12345 `12345 `12345 `12345\n1`2543 25`341 3`5142 415`32 52`413",
+	
+	"Number Sentences" : "1a1a1a1a 2s2s2s2s 3d3d3d3d 4f4f4f4f 5f5f5f5f\n1a2s3d4f5f 1a2s3d4f5f 1a2s3d4f5f 1a2s3d4f5f\n1 a 2 s 3 d 4 f 5 f 1 a 2 s 3 d 4 f 5 f\n1 and 1 is 2. there are 3 times as many people this year.\nif you bring 2 dozen eggs, it should be enough for 24 people.\nthere are 50 states in the united states but 51 stars on the united states flag.\nif 33 percent of people vote in an election, nearly 1 third of the population voted.\n1 fortnight is equivalent to 14 days or 336 hours.",
+	
+	"Advanced Numbers" : "6666 7777 8888 9999 0000\n6 7 8 9 0 6 7 8 9 0 6 7 8 9 0 6 7 8 9 0\n67890 67890 67890 67890\n69708 70698 86097 97086 07968",
+	
+	"Number Context" : "6 of my family members are currently over 90 years old.\nthere are 7 days in a week and 52 weeks in 1 year.\n197 nations participated in the 1996 summer olympics.\n10 weeks ago 4 of my relatives came to visit for 8 days.\nthere is a 45 minute wait at 1 of my favorite restaurants tonight.",
+	
+	"Symbol Practice" : "[[[[ ]]]] \\\\\\\\ ---- ====\n[ ] \\ - = [ ] \\ - = [ ] \\ - = [ ] \\ - =\n[]\\-= []\\-= []\\-= []\\-=\n]-=\\[ \\[-]= -][\\= =\\-][",
+	
+	"Symbol Applications" : "[;[;[;[; ];];];]; \\;\\;\\;\\; -;-;-;-; =;=;=;=;\n[;];\\;-;=; [;];\\;-;=; [;];\\;-;=; [;];\\;-;=;\n[ ; ] ' \\ ' - ; = ; [ ; ] ' \\ ' - ; = ;\nwe are expecting the new employee [in the marketing department] to excel.\nthe \\ symbol [backslash] is used to access websites\nby going to example.com/subject/all you can view all the courses on example.com\n[9 - 4 = 5] [8 - 2 = 6] [7 - 6 = 1] [7 - 4 = 3]\n[4 - 1 = 2] [7 - 3 = 4] [ 9 - 5 = 4] [4 - 2 = 2]",
+	
+	"Capitalization Practice" : "George Washington was the first president of the United States.\nThe Amazon River in South America and the Nile River in Africa are the longest rivers in the world.\nEdmund Hillary [from New Zealand] was the first person to climb the highest mountain in the world, Mount Everest.\nBelize, Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, and Panama are the 7 countries that make up Central America.\nHistorically, there are 4 oceanic regions that make up the world's entire ocean: Atlantic Ocean, Pacific Ocean, Indian Ocean and Arctic Ocean.",
+	
+	"Numeric Home Row" : "444455556666++++0000\n456+0456+0456+0456+0\n405060+0405060+0\n4+5+6+0+4+5+6+0+4+5+6+0+4+5+6+0\n5460+6450+0564+5460+6450+0564",
+	
+	"Numeric Index Patterns" : "777744441111777744441111\n741741741741741741741741\n74747474141414147474747414141414\n174714471174714471",
+	
+	"Numeric Index Blends" : "4+7+1+5+6+0+4+7+1+5+6+0\n5+7+4+1+0+6+5+7+4+1+0+6\n406571+175604+406571+175604\n740651+156047+740651+156047",
+	
+	"Numeric Middle Patterns" : "888855552222888855552222\n852852852852852852852852\n858585852525252525252525\n825258825258825258825258",
+	
+	"Numeric Middle Blends" : "81+46+57+02+81+46+57+02\n624+810+715+425+624+810+715+425\n8751+6402+1578+2046+8751+6402+1578+2046",
+	
+	"Numeric Ring Patterns" : "999966663333....\n963.963.963.963.\n9696969636363636.6.6.6.6\n396.963.693.369.396.963.693.369",
+	
+	"Numeric Ring Calculations" : "95.20+51.73+403.621\n48.62+70.39+20.51+72.91\n7028.36+9163.05+3890.42+1638.59\n9583.61+2409.83+5036.19+6382.07",
+	
+	"Numeric Pinky Math" : "1+8=9\n7*3=21\n9-6=3\n60/3=20\n23*4=92\n75/3=25\n83+17=100\n83+17=100\n62.76-43.81=18.95\n1042.5+8039.3=9081.8"
+}
+for (var k in exerciseText) {
+		document.getElementById('exerciseSelector').innerHTML += "<option value='"+k+"'>"+k+"</option>";	
+}
+
+function changeEx() {
+	var sel = document.getElementById('exerciseSelector').value;
+	window.currentExercise = exerciseText[sel];
+	console.log(window.currentExercise);
+	window.currentExerciseWords = window.currentExercise.replace(/\n/g, "<br>\n").split(/ |\n/g);
+	console.log(window.currentExercise);
+	console.log (window.currentExerciseWords);
+	reset();
+}
+
+function populatePrompt() {
+	var thePromptString = "";
+	for (k=0;k<window.currentExerciseWords.length;k++) {
+	if (window.currentExerciseWords[k].match(/<br>/)){
+	console.log(window.currentExerciseWords[k]);
+		thePromptString += "<span id='matchWord"+k+"' class='matchWord'>"+currentExerciseWords[k].replace(/<br>/,"")+"</span><br>";
+		} else {
+		thePromptString += "<span id='matchWord"+k+"' class='matchWord'>"+window.currentExerciseWords[k]+"</span> ";
+		}
+	}
+	document.getElementById('prompt').innerHTML = thePromptString;
+ 	document.getElementById('response_input').style.height = document.getElementById('prompt').clientHeight
+ 	document.getElementById('response_input').disabled = false;
+}
+
+function reset(){
+	window.startedTime = 0;
+	document.getElementById('response_input').value="";
+	document.getElementById('feedback').innerHTML = " ";
+	var prompt = document.getElementById('prompt');
+	populatePrompt();
+}
+
+function getKeyDown(e){
+ if(window.startedTime==0) {
+  window.startedTime = new Date();
+ }
+  window.lastUpdate = new Date();
+ doCalc();
+}
+
+function doCalc() {
+  var typedText = document.getElementById('response_input').value;
+  var typedTextLength = typedText.length;
+  if (typedTextLength >= 1){
+	  var words = typedTextLength / 5;
+	  window.timeSpentInMinutes = (window.lastUpdate - window.startedTime) / 1000 / 60;
+
+	  // calc wpm
+	  window.wpm = Math.floor(words / window.timeSpentInMinutes);
+	  document.getElementById('feedback').innerHTML = window.wpm + "WPM (Approx.)";
+	  
+	  //color words
+    var currentTextWords = typedText.split(/ |\n/);
+		window.errorCount = 0;
+		var curEx = window.currentExercise.split(/ |\n/);
+    for (i=0;i<currentTextWords.length;i++){
+	    if(currentTextWords[i] == curEx[i])
+	    {
+		    document.getElementById("matchWord"+i).className = "matchCorrect";
+	    } else {
+		    document.getElementById("matchWord"+i).className = "matchIncorrect";
+		    window.errorCount++;		    
+	    }
+    }
+  }
+ }
+ 
+function doFinished(){
+	document.getElementById('response_input').disabled = true;
+	var adjustedWpm = Math.floor(window.wpm - (window.errorCount / (window.timeSpentInMinutes)));
+	adjustedWpm < 0 ? adjustedWpm = 0 : adjustedWpm = adjustedWpm;
+	document.getElementById('feedback').innerHTML = window.wpm + "WPM, " + window.errorCount + " errors. (Adjusted WPM: " + adjustedWpm + ")";
+}
+document.getElementById('response_input').disabled = true;
+</script>
+</html>

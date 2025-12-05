@@ -105,5 +105,5 @@ For issues or suggestions:
 **Start improving your typing skills today with VTS!**
 
 
-<img width="1308" height="953" alt="image" src="https://github.com/user-attachments/assets/01fea69e-ce66-4aa8-8555-93cef56b6875" />
+<img width="1490" height="933" alt="image" src="https://github.com/user-attachments/assets/378d7ad7-7540-4e8c-88ed-9c7af42b9ee5" />
 

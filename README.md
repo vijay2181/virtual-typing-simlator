@@ -87,10 +87,6 @@ Since this is a single-file application, contributions would involve:
 3. Enhancing the typing algorithm
 4. Adding new features like timed tests or progress tracking
 
-## License
-
-This project is provided for educational and personal use. The typing exercises have been designed to avoid copyright concerns by using original or modified content.
-
 ## Acknowledgments
 
 - Designed with a futuristic aesthetic for an engaging user experience
